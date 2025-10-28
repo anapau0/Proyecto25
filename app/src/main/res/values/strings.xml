@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">December14</string>
+    <string name="ErrorMsgAdd">Error al agregar usuario</string>
+    <string name="ErrorMsgRemove">Error al eliminar el usuario</string>
+    <string name="ErrorMsgUpdate">Error al actualizar el usuario</string>
+    <string name="MsgDataNotFound">El usuario no fue encontrado</string>
+    <string name="ErrorAProduct">Error al agregar un producto</string>
+    <string name="ErrorRProducto">Error al eliminar producto</string>
+    <string name="ErrorUProduct">Erros al actualizar el producto</string>
+    <string name="ErrorAddOrder">Error al añadir la orden</string>
+    <string name="ErrorRemoveOrder">Error al eliminar la orden</string>
+    <string name="ErrorUpdateOrder">Error al actualizar la orden</string>
+</resources>
