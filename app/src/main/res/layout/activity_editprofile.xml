@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/editProfile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FA"
+    android:padding="12dp">
+
+    <!-- TÍTULO -->
+    <TextView
+        android:id="@+id/txteditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar Perfil"
+        android:textColor="#1A1A1A"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- TARJETA CON CAMPOS EDITABLES -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/editCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/txteditProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- FOTO DE PERFIL (EDITABLE) -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgProfile_edit"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:civ_border_width="3dp"
+                    app:civ_border_color="#1E88E5" />
+
+            </RelativeLayout>
+
+            <!-- NOMBRE -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre completo"
+                app:startIconTint="#1E88E5"
+                app:boxStrokeColor="#1E88E5"
+                app:hintTextColor="#1E88E5"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtName_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- CORREO -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                app:startIconTint="#1E88E5"
+                app:boxStrokeColor="#1E88E5"
+                app:hintTextColor="#1E88E5"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtEmail_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- TELÉFONO -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Teléfono"
+                app:startIconTint="#1E88E5"
+                app:boxStrokeColor="#1E88E5"
+                app:hintTextColor="#1E88E5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPhone_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- BOTÓN GUARDAR -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSave_edit"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/btnSave_edit"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:backgroundTint="#1E88E5"
+        app:cornerRadius="18dp"
+        app:iconGravity="textStart"
+        app:iconPadding="12dp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editCard" />
+
+    <!-- BOTÓN CANCELAR -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancel_edit"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/btnCancel_edit"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:backgroundTint="#B0BEC5"
+        app:cornerRadius="18dp"
+        app:iconGravity="textStart"
+        app:iconPadding="12dp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSave_edit" />
+
+    <!-- BARRA INFERIOR FIJA -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:padding="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHome_Edit"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="@string/btnHome_Edit"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:cornerRadius="14dp"
+            app:iconGravity="top"
+            app:iconPadding="2dp"
+            app:iconTint="#1E88E5"
+            app:strokeColor="#1E88E5"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMenu_Edit"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="@string/btnMenu_Edit"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:cornerRadius="14dp"
+            app:iconGravity="top"
+            app:iconPadding="2dp"
+            app:iconTint="#1E88E5"
+            app:strokeColor="#1E88E5"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCart_Edit"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="@string/btnCart_Edit"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:cornerRadius="14dp"
+            app:iconGravity="top"
+            app:iconPadding="2dp"
+            app:iconTint="#1E88E5"
+            app:strokeColor="#1E88E5"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnProfile_edit"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="@string/btnProfile_edit"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:backgroundTint="#1E88E5"
+            app:cornerRadius="14dp"
+            app:iconGravity="top"
+            app:iconPadding="2dp"
+            app:iconTint="#FFFFFF" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
