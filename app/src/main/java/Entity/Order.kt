@@ -21,6 +21,8 @@ class Order {
         this.orderDate = orderDate
         this.totalPrice = totalPrice
 
+
+
     }
     var OrderId: Int
         get() = orderId

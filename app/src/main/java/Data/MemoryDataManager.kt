@@ -1,53 +1,77 @@
 package Data
 
-import Entity.Order
-import Entity.Product
-import Entity.User
+import Entity.Register
 
-object MemoryDataManager : IDataManager {
+object MemoryDataManager {
 
-    //Usuarios
-    private val users = mutableListOf<User>()
+    private val users = mutableListOf<Register>()
+    private val cartItems = mutableListOf<CartItem>()
 
-    override fun addUser(user: User) {
-        users.add(user)
+    // ========== GESTIÓN DE USUARIOS ==========
+
+    fun getAllUsers(): List<Register> {
+        return users.toList()
     }
 
-    override fun removeUser(id: String) {
-        users.removeIf { it.Id.trim() == id.trim() }
+    fun saveUser(user: Register) {
+        if (user.id == 0) {
+            val nuevoId = if (users.isEmpty()) 1 else users.maxOf { it.id } + 1
+            users.add(user.copy(id = nuevoId))
+        } else {
+            val index = users.indexOfFirst { it.id == user.id }
+            if (index != -1) users[index] = user else users.add(user)
+        }
     }
 
-    override fun updateUser(user: User) {
-        removeUser(user.Id)
-        addUser(user)
+    fun getUserByEmail(email: String): Register? {
+        return users.find { it.email.equals(email, ignoreCase = true) }
     }
 
-    //Ordenes
-    private val orders = mutableListOf<Order>()
+    fun addUser(user: Register) = users.add(user)
 
-    override fun addOrder(order: Order) {
-        orders.add(order)
-    }
+    fun removeUser(id: Int) = users.removeAll { it.id == id }
 
-    override fun removeOrder(id: String) {
-        orders.removeIf { it.OrderId.toString().trim() == id.trim() }
-    }
+    // ========== GESTIÓN DEL CARRITO ==========
 
-    override fun updateOrder(order: Order) {
-        removeOrder(order.OrderId.toString())
-        addOrder(order)
+    data class CartItem(
+        val name: String,
+        val price: Double,
+        var quantity: Int = 1
+    ) {
+        fun getTotal(): Double = price * quantity
     }
 
-    private val products = mutableListOf<Product>()
-    override fun addProduct(product: Product) {
-        products.add(product)
+    fun addToCart(name: String, price: Double) {
+        val existing = cartItems.find { it.name == name }
+        if (existing != null) {
+            existing.quantity += 1
+        } else {
+            cartItems.add(CartItem(name, price))
+        }
     }
-    override fun removeProduct(id: String) {
-        products.removeIf { it.Id_product.toString().trim() == id.trim() }
-    }
-    override fun updateProduct(product: Product) {
-        removeProduct(product.Id_product.toString())
-        addProduct(product)
 
+    fun getCartItems(): List<CartItem> = cartItems.toList()
+
+    fun increaseQuantity(name: String) {
+        val item = cartItems.find { it.name == name }
+        item?.let { it.quantity += 1 }
     }
+
+    fun decreaseQuantity(name: String) {
+        val item = cartItems.find { it.name == name }
+        if (item != null && item.quantity > 1) {
+            item.quantity -= 1
+        } else if (item != null && item.quantity == 1) {
+            // Si la cantidad es 1, eliminar el item
+            cartItems.removeAll { it.name == name }
+        }
+    }
+
+    fun removeFromCart(name: String) {
+        cartItems.removeAll { it.name == name }
+    }
+
+    fun getCartTotal(): Double = cartItems.sumOf { it.getTotal() }
+
+    fun clearCart() = cartItems.clear()
 }
