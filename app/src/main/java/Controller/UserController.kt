@@ -6,9 +6,9 @@ import Entity.User
 
 class UserController {
 
-    private var dataManager: IDataManager = MemoryDataManager
+    private var dataManager: MemoryDataManager = MemoryDataManager
 
-    fun addUser(user: User) {
+  /*  fun addUser(user: User) {
         try {
             dataManager.addUser(user)
         } catch (e: Exception) {
@@ -21,8 +21,8 @@ class UserController {
                 throw Exception("Error al actualizar el usuario")
             }
 
-        }
+        }}*/
     }
-}
+
 
 

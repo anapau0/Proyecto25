@@ -5,9 +5,9 @@ import Data.MemoryDataManager
 import Entity.Order
 
 class OrderController {
-    private var dataManager: IDataManager = MemoryDataManager
+    private var dataManager: MemoryDataManager = MemoryDataManager
 
-    fun addOrder(order: Order) {
+   /* fun addOrder(order: Order) {
         try {
             dataManager.addOrder(order)
         } catch (e: Exception) {
@@ -15,7 +15,7 @@ class OrderController {
         }
     }
 
-    fun removeOrder(orderId: Int) {
+      fun removeOrder(orderId: Int) {
         try {
             dataManager.removeOrder(orderId.toString())
         } catch (e: Exception) {
@@ -29,5 +29,7 @@ class OrderController {
         } catch (e: Exception) {
             throw Exception("Error al actualizar la orden")
         }
-    }
+    }*/
 }
+
+

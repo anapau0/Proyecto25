@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/payment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/txtPaymentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Método de Pago"
+        android:textColor="#1A1A1A"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/txtPaymentTitle"
+        app:layout_constraintBottom_toTopOf="@id/buttonContainerPayment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- RESUMEN DEL PEDIDO -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/orderSummaryCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Resumen del Pedido"
+                        android:textColor="#1A1A1A"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Total de artículos:"
+                            android:textColor="#666666"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtItemCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#1A1A1A"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="12dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Total a pagar:"
+                            android:textColor="#1A1A1A"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtTotalPayment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₡0.00"
+                            android:textColor="#1E88E5"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/txtSelectMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selecciona tu método de pago"
+                android:textColor="#1A1A1A"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <RadioButton
+                        android:id="@+id/radioCreditCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tarjeta de Crédito/Débito"
+                        android:textSize="16sp"
+                        android:textColor="#1A1A1A"
+                        android:padding="20dp"
+                        android:drawableEnd="@android:drawable/ic_secure"
+                        android:drawablePadding="12dp"
+                        android:buttonTint="#1E88E5"
+                        android:checked="true" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <RadioButton
+                        android:id="@+id/radioSinpe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SINPE Móvil"
+                        android:textSize="16sp"
+                        android:textColor="#1A1A1A"
+                        android:padding="20dp"
+                        android:drawableEnd="@android:drawable/ic_dialog_email"
+                        android:drawablePadding="12dp"
+                        android:buttonTint="#1E88E5" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <RadioButton
+                        android:id="@+id/radioCash"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Efectivo (Pago contra entrega)"
+                        android:textSize="16sp"
+                        android:textColor="#1A1A1A"
+                        android:padding="20dp"
+                        android:drawableEnd="@android:drawable/ic_dialog_info"
+                        android:drawablePadding="12dp"
+                        android:buttonTint="#1E88E5" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </RadioGroup>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/buttonContainerPayment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelPayment"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Cancelar"
+            app:cornerRadius="16dp"
+            app:strokeColor="#E53935"
+            app:strokeWidth="2dp"
+            android:textColor="#E53935"
+            app:icon="@android:drawable/ic_menu_close_clear_cancel"
+            app:iconTint="#E53935"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmPayment"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Confirmar Pago"
+            app:cornerRadius="16dp"
+            app:backgroundTint="#4CAF50"
+            app:icon="@android:drawable/ic_menu_send"
+            app:iconTint="#FFFFFF"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
