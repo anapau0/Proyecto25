@@ -34,7 +34,6 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
 
-        // Tus findViewById
         txtName = findViewById(R.id.txtName_register)
         txtBirthdate = findViewById(R.id.txtBirthdate_register)
         txtMail = findViewById(R.id.txtMail_register)
@@ -81,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
 
             val nuevoId = (MemoryDataManager.getAllUsers().maxOfOrNull { it.id } ?: 0) + 1
 
-            val nuevoUsuario = Register(
+            val newUser = Register(
                 id = nuevoId,
                 name = name,
                 birthdate = birthdate,
@@ -91,7 +90,7 @@ class RegisterActivity : AppCompatActivity() {
                 address = address
             )
 
-            MemoryDataManager.saveUser(nuevoUsuario)
+            MemoryDataManager.saveUser(newUser)
 
             Toast.makeText(this, "¡Registro exitoso! Bienvenido $name", Toast.LENGTH_LONG).show()
             Util.openActivity(this, LoginActivity::class.java)

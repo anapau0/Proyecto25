@@ -19,7 +19,7 @@ import androidx.cardview.widget.CardView
 
 class MenuActivity : AppCompatActivity() {
 
-    private var usuarioActual: Register? = null
+    private var CurrentUser: Register? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +32,11 @@ class MenuActivity : AppCompatActivity() {
             insets
         }
 
-        usuarioActual = MemoryDataManager.getAllUsers().lastOrNull()
+        CurrentUser = MemoryDataManager.getAllUsers().lastOrNull()
 
         val txtTitulo = findViewById<TextView>(R.id.textView33)
-        if (usuarioActual != null) {
-            txtTitulo.text = "¡Hola, ${usuarioActual!!.name.split(" ").first()}!"
+        if (CurrentUser != null) {
+            txtTitulo.text = "¡Hola, ${CurrentUser!!.name.split(" ").first()}!"
         } else {
             txtTitulo.text = "Menú del Día"
         }
@@ -74,14 +74,14 @@ class MenuActivity : AppCompatActivity() {
         })
 
 
-        val productos = listOf(
+        val products = listOf(
             Triple("Arroz con Camarones", 8500.0, R.id.select_op1),
             Triple("Filete de Res y Hongos", 12000.0, R.id.select_opc2),
             Triple("Pasta al Pomodoro", 7500.0, R.id.select_opc3),
             Triple("Costillitas y Risotto", 11500.0, R.id.select_opc4)
         )
 
-        productos.forEach { (nombre, precio, buttonId) ->
+        products.forEach { (nombre, precio, buttonId) ->
             findViewById<Button>(buttonId).setOnClickListener {
                 MemoryDataManager.addToCart(nombre, precio)
                 Toast.makeText(
