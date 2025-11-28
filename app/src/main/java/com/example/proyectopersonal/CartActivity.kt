@@ -30,7 +30,6 @@ class CartActivity : AppCompatActivity() {
             insets
         }
 
-        // Inicializar vistas
         recyclerView = findViewById(R.id.recyclerCartItems)
         txtTotal = findViewById(R.id.txtTotalCart)
 
